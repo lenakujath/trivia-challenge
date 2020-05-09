@@ -10,7 +10,7 @@ class RoundOne extends React.Component {
         title: 'Round 2 - Film Knowledge',
         data: [],
         allAnswers: [],
-        correctAnswers: 0
+       
     }
 
   
@@ -22,7 +22,7 @@ class RoundOne extends React.Component {
         .then((response) => (response.json())
         .then(questions => {
             const myquestions = questions.results;
-            
+
             this.setState({
                 data: myquestions
             })
@@ -40,14 +40,14 @@ class RoundOne extends React.Component {
         {
           this.state.data.map( (data, index) => {
             
-             return <div className="card"> 
+             return <div className="question"> 
                       <h2> {data.question}</h2> 
                      <Answer key={index} id={index} rightAnswer={data.correct_answer} answer={data.incorrect_answers}  />
                  </div>
           })
          }
         </div> }
-        <Link to="roundthree">Start third Round</Link>
+        <Link to="roundthree">Next</Link>
     </div>
   );
  }

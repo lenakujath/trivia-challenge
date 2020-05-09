@@ -4,15 +4,20 @@ class Answer extends React.Component {
  
     
       state = {
-
-        Answers: this.props.answer,
-        Clicked: true,
+ 
+        wrongAnswers: this.props.answer,
+        //checking for a click event
+        notClicked: true,
         rightAnswer: this.props.rightAnswer,
+        //the array were right and wrong answers are mixed together
         allAnswers: [],
-        allRandom: []
+        // the shuffeld array
+        allRandom: [],
+      
           
       };
 
+      //Using a shuffle function to randomize the place of the right answer
 
       shuffle = (a) => {
 
@@ -28,29 +33,35 @@ class Answer extends React.Component {
         return a;
     }
 
+      
+    // when the component is loaded, the previously seperate properties of the right and the wrong answers are pushed into one array
+    // the occurrance of the right answer gets randomized by using the shuffle() on the array
+     
       componentDidMount = () => {
         
 
-        let responses = [...this.state.Answers];
+        let responses = [...this.state.wrongAnswers];
         let allTogether = [...responses];
         allTogether.push(this.state.rightAnswer);
         let shuffled = this.shuffle(allTogether)
       
         this.setState({
 
-            allAnswers: shuffled
+            allAnswers: shuffled,
+            
         })
       }
 
-   
-      onChoice = () => {
-       
+      //by checking with a boolean if a choice has been made, a ternary can later be used to display exlusively the right answer
+      //after a click event
+
+      onChoice = (event) => {
+
         this.setState({ 
 
-          Clicked: false
+          notClicked: false,
 
-        });
-      
+        });    
       };
       
       render() {
@@ -60,9 +71,11 @@ class Answer extends React.Component {
           <div>
         
               <div>
-            { this.state.Clicked ?  this.state.allAnswers.map(answer => {
+              {/*The ternary controls, by checking if a click event did happen if we see all possible options, or the 
+              right answer at the end */}
+            { this.state.notClicked ?  this.state.allAnswers.map((answer, index) => {
               return <button onClick={this.onChoice}>{answer}</button> ;                         
-            })  : <button > {this.state.rightAnswer}</button> 
+            })  : <button> {this.state.rightAnswer}</button> 
              } 
                 </div>
            

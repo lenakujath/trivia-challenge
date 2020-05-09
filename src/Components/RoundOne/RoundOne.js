@@ -1,7 +1,6 @@
 import React from 'react';
 import Answer from '../Answers/Answers';
 import { Link } from 'react-router-dom';
-//import '../../styles.css';
 
 
 class RoundOne extends React.Component {
@@ -11,7 +10,7 @@ class RoundOne extends React.Component {
         title: 'Round 1 - General Knowledge',
         data: [],
         allAnswers: [],
-        correctAnswers: 0
+        
     }
 
     componentDidMount = () => {
@@ -39,7 +38,7 @@ class RoundOne extends React.Component {
         {
           this.state.data.map( (data, index) => {
            
-          return <div className="card"> 
+          return <div className="question"> 
                       <h2> {data.question}</h2> 
                      <Answer key={index} id={index} rightAnswer={data.correct_answer} answer={data.incorrect_answers} 
                       />
@@ -47,7 +46,7 @@ class RoundOne extends React.Component {
           })
          }
         </div> }
-        <Link to="roundtwo">Start second Round</Link>
+        <Link to="roundtwo">Next</Link>
     </div>
   );
  }
