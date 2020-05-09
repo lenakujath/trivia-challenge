@@ -1,14 +1,13 @@
 import React from 'react';
 import Answer from '../Answers/Answers';
 import { Link } from 'react-router-dom';
-//import '../../styles.css';
 
 
-class RoundOne extends React.Component {
+class RoundThree extends React.Component {
 
     state = {
 
-        title: 'Round 1 - General Knowledge',
+        title: 'Round 3 - Music Knowledge',
         data: [],
         allAnswers: [],
         correctAnswers: 0
@@ -17,10 +16,11 @@ class RoundOne extends React.Component {
     componentDidMount = () => {
 
       
-      return fetch(`https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple`)
+      return fetch(`https://opentdb.com/api.php?amount=5&category=12&difficulty=hard&type=multiple`)
         .then((response) => (response.json())
         .then(questions => {
             const myquestions = questions.results;
+            
          
             this.setState({
                 data: myquestions
@@ -38,19 +38,18 @@ class RoundOne extends React.Component {
        { <div>
         {
           this.state.data.map( (data, index) => {
-           
+            
           return <div className="card"> 
                       <h2> {data.question}</h2> 
-                     <Answer key={index} id={index} rightAnswer={data.correct_answer} answer={data.incorrect_answers} 
-                      />
+                     <Answer key={index} id={index} rightAnswer={data.correct_answer} answer={data.incorrect_answers}  />
                  </div>
           })
          }
         </div> }
-        <Link to="roundtwo">Start second Round</Link>
+        <Link to="theend">Wrap it up!</Link>
     </div>
   );
  }
 }
 
-export default RoundOne;
+export default RoundThree;

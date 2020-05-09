@@ -1,9 +1,10 @@
 import React from 'react';
 import logo from './trivia-logo.png';
+import logo2 from './logo2jpg.jpg';
 import './Home.css';
 import { Link } from 'react-router-dom';
 
-//https://www.google.com/search?q=trivia+logo&client=firefox-b-d&source=lnms&tbm=isch&sa=X&ved=2ahUKEwibpa2Hv6bpAhUk8uAKHUx4DgcQ_AUoAXoECAwQAw&biw=1536&bih=727#imgrc=pH3QCPFm1h1SDM
+
 
 const Home = () => (
 
@@ -11,8 +12,10 @@ const Home = () => (
        <div > 
            <img src={logo} className="logo" alt="logo" /> 
        </div> 
-     <h1>This Trivia is great!</h1>
-     <Link to="roundone">Start first Round</Link>
+        <h1>This Trivia is great!</h1> <img src={logo2} className="logo" alt="logo2"/>
+        <br></br>
+        <Link to="roundone">Start first Round</Link>
+         
     </div>
   );
 
