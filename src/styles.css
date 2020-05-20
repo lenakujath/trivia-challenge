@@ -27,7 +27,7 @@ body {
 
 button {
 
-  border:none;
+  border: none;
   background-color:black;
   color: white;
   margin-right: 4px;
@@ -37,7 +37,7 @@ button {
 
 button:hover {
 
-  border:none;
+  border: none;
   outline: none;
   background-color: transparent;
   color: white;
